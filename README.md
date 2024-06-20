@@ -20,7 +20,6 @@ possibile eliminare la playlist.
 In Create Playlist si può creare una playlist  dandole un nome, assegnandole delle canzoni e selezionare se renderla pubblica o meno.
 Infine con Logout si effettua il Logout.
 
-Ho creato un superuser e due utenti con cui ho già aggiunto delle playlist anche pubbliche
-superuser: username:samuele password:samuele
+Ho creato due utenti con cui ho già aggiunto delle playlist anche pubbliche
 utenti: username:Lattanzi password:samuele18
         username:Lattanzi2 password:samuele18
