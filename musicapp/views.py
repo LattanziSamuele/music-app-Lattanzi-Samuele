@@ -49,6 +49,21 @@ def recommend_songs_by_playlist_genre(user):
     recommended_songs = Song.objects.filter(genre=most_common_genre).distinct()
     return recommended_songs
 
+def recommend_songs_by_time(user):
+    playlists = Playlist.objects.filter(user=user)
+    genre_duration = Counter()
+
+    for playlist in playlists:
+        for song in playlist.songs.all():
+            minutes, seconds = map(int, song.duration.split(':'))
+            total_seconds = minutes * 60 + seconds
+            genre_duration[song.genre] += total_seconds
+
+    if genre_duration:
+        most_listened_genre = genre_duration.most_common(1)[0][0]
+        recommended_songs = Song.objects.filter(genre=most_listened_genre).distinct()
+        return recommended_songs
+
 class SongListView(ListView):
     model = Song
     template_name = 'song_listing.html'
@@ -150,6 +165,7 @@ class UserProfileView(LoginRequiredMixin, TemplateView):
         context['genre_recommendations'] = recommend_songs_by_genre(profile)
         context['artist_recommendations'] = recommend_songs_by_artists(user_profile)
         context['playlist_genre_recommendations'] = recommend_songs_by_playlist_genre(user_profile)
+        context['playlist_time_recommendations'] = recommend_songs_by_time(user_profile)
         return context
 
 

@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 #SECRET_KEY = 'django-insecure-kud*53=341(7%rtm#efh)d&dt@&b5l&(o19+5mtj7n=0a2jsqo'
 SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+#DEBUG = True
 DEBUG = os.environ.get("DEBUG", '') == "True"
 
 ALLOWED_HOSTS = []
@@ -86,7 +86,7 @@ DATABASE_URL = os.environ.get("DATABASE_URL")
 DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default='postgres://my_music_app_k0jg_user:P57vnxnytbJaYTIA2aUVTqBuqDw72Ri4@dpg-cpoqg4rv2p9s73dbv970-a.frankfurt-postgres.render.com/my_music_app_k0jg',
+        default='postgres://music_app_db_vgce_user:zDKJeRz4JrPq3Rimd2P01SHchW3oeEdx@dpg-cppvi6qj1k6c73e2bueg-a.frankfurt-postgres.render.com/music_app_db_vgce',
         conn_max_age=600)
 }
 

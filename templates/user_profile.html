@@ -36,7 +36,7 @@
           {% for playlist in playlists %}
           <li class="list-group-item">
             <a href="{% url 'playlist_detail' playlist.pk %}">{{ playlist.name }}</a>
-            {% if playlist.get_is_public_display %}
+            {% if playlist.is_public %}
             <span class="badge badge-info float-right">Public</span>
             {% else %}
             <span class="badge badge-secondary float-right">Private</span>
@@ -58,7 +58,7 @@
             <a href="{% url 'playlist_detail' playlist.pk %}">{{ playlist.name }}</a>
           </li>
           {% empty %}
-          <li class="list-group-item">You haven't created any public Plalists</li>
+          <li class="list-group-item">You haven't created any public Playlists</li>
           {% endfor %}
         </ul>
       </div>
@@ -95,6 +95,18 @@
         </div>
         <ul class="list-group list-group-flush">
           {% for song in playlist_genre_recommendations %}
+          <li class="list-group-item">{{ song.title }} by {{ song.artist }} - Genre: {{ song.genre }}</li>
+          {% empty %}
+          <li class="list-group-item">You haven't added any songs to your playlists yet.</li>
+          {% endfor %}
+        </ul>
+      </div>
+         <div class="card mt-4 mb-4">
+        <div class="card-header">
+          <h3>Recommendations Based on Most Listened Genre</h3>
+        </div>
+        <ul class="list-group list-group-flush">
+          {% for song in playlist_time_recommendations %}
           <li class="list-group-item">{{ song.title }} by {{ song.artist }} - Genre: {{ song.genre }}</li>
           {% empty %}
           <li class="list-group-item">You haven't added any songs to your playlists yet.</li>

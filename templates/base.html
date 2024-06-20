@@ -8,25 +8,27 @@
 </head>
 <body>
 
-    <header class="p-3 mb-3 border-bottom">
-        <div class="d-flex flex-wrap align-items-center justify-content-center
-        justify-content-lg-start">
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center
-          mb-md-0 gap-3">
-                <li class="nav-item" ><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'song_listing' %}">Song Listing</a></li>
+   <header class="p-3 mb-3 border-bottom bg-light">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start gap-2">
+            <a href="{% url 'home' %}" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+                <span class="fs-4">MusicApp</span>
+            </a>
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 gap-3">
+                <li><a href="{% url 'song_listing' %}" class="nav-link px-2 link-dark">Song Listing</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'user_profile' %}">Profile</a></li>
-                    <li><a href="{% url 'user_playlists' %}">Playlists</a></li>
-                    <li><a href="{% url 'playlist_creation' %}">Create Playlist</a></li>
-                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    <li><a href="{% url 'user_profile' %}" class="nav-link px-2 link-dark">Profile</a></li>
+                    <li><a href="{% url 'user_playlists' %}" class="nav-link px-2 link-dark">Playlists</a></li>
+                    <li><a href="{% url 'playlist_creation' %}" class="nav-link px-2 link-dark">Create Playlist</a></li>
+                    <li><a href="{% url 'logout' %}" class="nav-link px-2 link-dark">Logout</a></li>
                 {% else %}
-                    <li><a href="{% url 'login' %}">Login</a></li>
-                    <li><a href="{% url 'registration' %}">Register</a></li>
+                    <li><a href="{% url 'login' %}" class="nav-link px-2 link-dark">Login</a></li>
+                    <li><a href="{% url 'registration' %}" class="nav-link px-2 link-dark">Register</a></li>
                 {% endif %}
             </ul>
         </div>
-    </header>
+    </div>
+</header>
     <main>
         <div class="container">
         {% block content %}

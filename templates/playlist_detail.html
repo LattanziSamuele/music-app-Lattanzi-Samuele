@@ -6,13 +6,16 @@
     <div class="card-body">
       <h2 class="card-title">Playlist: {{ playlist.name }}</h2>
       <p class="card-text">Created by: {{ playlist.user.username }}</p>
-      <p class="card-text">{{ playlist.description }}</p>
+        <p class="card-text">{% if playlist.is_public%} <span>Public</span>
+            {% else %}<span>Private</span>
+          {% endif %}
+      </p>
 
       <h3 class="card-subtitle mb-3 mt-4">Songs</h3>
       <ul class="list-group">
         {% for song in songs %}
           <li class="list-group-item">
-            {{ song.title }} by {{ song.artist }} - Genre: {{ song.genre }}
+            {{ song.title }} by {{ song.artist }} - Genre: {{ song.genre }} - Duration: {{ song.duration }}
           </li>
         {% empty %}
           <li class="list-group-item">No songs in this playlist.</li>

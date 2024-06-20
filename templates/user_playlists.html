@@ -7,7 +7,7 @@
       <div class="card mt-4">
         <div class="card-body">
           <h2 class="card-title">Your Playlists</h2>
-          <ul class="list-group">
+            <ul class="list-group">
             {% for playlist in user_playlists %}
               <li class="list-group-item">
                 <a href="{% url 'playlist_detail' playlist.pk %}">{{ playlist.name }}</a>
@@ -16,6 +16,7 @@
                 {% else %}
                   <span class="badge badge-secondary">Private</span>
                 {% endif %}
+                <span class="text-muted float-right">{{ playlist.created_at|timesince }} ago</span>
               </li>
             {% empty %}
               <li class="list-group-item">No playlists available.</li>
